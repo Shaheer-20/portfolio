@@ -600,11 +600,14 @@
       text-align: center;
       color: var(--text-color);
       position: relative;
+      z-index: 1;
       border-top: 1px solid rgba(255,255,255,0.1);
+      margin-top: 0;
     }
     
     .footer p {
       color: var(--text-color);
+      margin: 0;
     }
     
     /* Theme Toggle */
@@ -1289,8 +1292,7 @@
     </section>
   
     <!-- Footer -->
-    <footer class="footer" style="position: relative;">
-      <!-- Remove footer-wave div that was causing fluctuation -->
+    <footer class="footer">
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center" data-aos="fade-up">
