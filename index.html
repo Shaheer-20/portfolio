@@ -813,6 +813,24 @@
       padding: 4px 10px;
       border-radius: 20px;
     }
+    
+    /* Disable text selection across entire site */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Disable image dragging */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
+    }
   </style>
 </head>
 <body data-theme="dark">
@@ -1833,5 +1851,276 @@
         }, 100);
       });
     </script>
+    
+    <!-- Anti-Inspect Element Protection -->
+    <script>
+      // Common message function to ensure consistent messaging
+      function showMessage(x, y) {
+        const customMessage = document.createElement('div');
+        customMessage.innerHTML = '<div style="position:fixed;background:#4361ee;color:white;padding:15px 20px;border-radius:5px;font-family:\'Montserrat\',sans-serif;z-index:10000;box-shadow:0 4px 10px rgba(0,0,0,0.3);"><h3 style="margin:0;font-size:18px;">Nice try diddy</h3></div>';
+        
+        // Position near cursor if coordinates provided, otherwise center
+        const messageElement = customMessage.firstChild;
+        document.body.appendChild(messageElement);
+        
+        if (x && y) {
+          messageElement.style.top = y + 'px';
+          messageElement.style.left = x + 'px';
+        } else {
+          messageElement.style.top = '50%';
+          messageElement.style.left = '50%';
+          messageElement.style.transform = 'translate(-50%, -50%)';
+        }
+        
+        // Remove after delay
+        setTimeout(() => {
+          document.body.removeChild(messageElement);
+        }, 2000);
+        
+        return false;
+      }
+
+      // Initialize protection on page load
+      function initProtection() {
+        // Prevent image context menu specifically
+        const reapplyImageProtection = function() {
+          const images = document.getElementsByTagName('img');
+          for (let i = 0; i < images.length; i++) {
+            images[i].addEventListener('contextmenu', function(e) {
+              e.preventDefault();
+              showMessage(e.pageX, e.pageY);
+              return false;
+            });
+            
+            // Prevent drag and drop for images
+            images[i].addEventListener('dragstart', function(e) {
+              e.preventDefault();
+              showMessage(e.pageX, e.pageY);
+              return false;
+            });
+            
+            // Prevent image saving via mouse down
+            images[i].addEventListener('mousedown', function(e) {
+              if (e.button === 1 || e.button === 2) { // Middle or right click
+                e.preventDefault();
+                showMessage(e.pageX, e.pageY);
+                return false;
+              }
+            });
+          }
+        };
+        
+        // Apply initially
+        reapplyImageProtection();
+        
+        // Reapply protections periodically to catch dynamically loaded elements
+        setInterval(reapplyImageProtection, 2000);
+      }
+      
+      // Apply protections immediately and when DOM is ready
+      initProtection();
+      document.addEventListener('DOMContentLoaded', initProtection);
+      
+      // Apply protections when new content might be loaded
+      window.addEventListener('load', initProtection);
+      window.addEventListener('scroll', function() {
+        // Throttle to avoid performance issues
+        if (!window.protectionThrottle) {
+          window.protectionThrottle = setTimeout(function() {
+            initProtection();
+            window.protectionThrottle = null;
+          }, 1000);
+        }
+      });
+      
+      // Intercept fetch/XMLHttpRequest to reapply protection after AJAX calls
+      const originalFetch = window.fetch;
+      window.fetch = function() {
+        return originalFetch.apply(this, arguments).then(function(response) {
+          setTimeout(initProtection, 500);
+          return response;
+        });
+      };
+      
+      const originalXHROpen = XMLHttpRequest.prototype.open;
+      XMLHttpRequest.prototype.open = function() {
+        this.addEventListener('load', function() {
+          setTimeout(initProtection, 500);
+        });
+        return originalXHROpen.apply(this, arguments);
+      };
+
+      // Replace right-click menu with custom message
+      document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        showMessage(e.pageX, e.pageY);
+        return false;
+      });
+      
+      // Disable keyboard shortcuts for inspect element
+      document.addEventListener('keydown', function(e) {
+        // Prevent F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C
+        if (
+          e.key === 'F12' || 
+          (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c'))
+        ) {
+          e.preventDefault();
+          showMessage();
+          return false;
+        }
+        
+        // Prevent Ctrl+U (view source)
+        if (e.ctrlKey && (e.key === 'U' || e.key === 'u')) {
+          e.preventDefault();
+          showMessage();
+          return false;
+        }
+        
+        // Prevent saving page or images with Ctrl+S
+        if (e.ctrlKey && (e.key === 'S' || e.key === 's')) {
+          e.preventDefault();
+          showMessage();
+          return false;
+        }
+        
+        // Prevent Ctrl+C, Ctrl+V, Ctrl+X (copy, paste, cut)
+        if (e.ctrlKey && (e.key === 'C' || e.key === 'c' || e.key === 'V' || e.key === 'v' || e.key === 'X' || e.key === 'x')) {
+          e.preventDefault();
+          showMessage();
+          return false;
+        }
+        
+        // Prevent print screen
+        if (e.key === 'PrintScreen') {
+          showMessage();
+          return false;
+        }
+      });
+      
+      // Detect DevTools opening via window resize method
+      let devtoolsDetect = function() {
+        const threshold = 160;
+        
+        const emitEvent = (isOpen) => {
+          if (isOpen) {
+            // Clear the page or display a warning
+            document.body.innerHTML = '<div style="text-align:center;margin-top:40px;font-family:\'Montserrat\',sans-serif;"><h1 style="font-size:4rem;color:#4361ee;">Nice try diddy</h1><p style="font-size:1.5rem;">Inspector tools are disabled on this page.</p></div>';
+          }
+        };
+        
+        const devtools = {
+          isOpen: false,
+          orientation: null
+        };
+        
+        // Check if width-height differential is significant enough to trigger
+        setInterval(function() {
+          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+          
+          // Landscape mode
+          if (widthThreshold) {
+            devtools.isOpen = true;
+            devtools.orientation = 'vertical';
+          } 
+          // Portrait mode
+          else if (heightThreshold) {
+            devtools.isOpen = true;
+            devtools.orientation = 'horizontal';
+          } 
+          else {
+            devtools.isOpen = false;
+            devtools.orientation = null;
+          }
+          
+          emitEvent(devtools.isOpen);
+        }, 1000);
+      };
+      
+      devtoolsDetect();
+      
+      // Additional layer of protection using debugger trick
+      (function() {
+        function detectDevTools() {
+          const start = new Date();
+          debugger;
+          const end = new Date();
+          
+          // If debugger is stopped, time difference will be significant
+          if (end - start > 100) {
+            document.body.innerHTML = '<div style="text-align:center;margin-top:40px;font-family:\'Montserrat\',sans-serif;"><h1 style="font-size:4rem;color:#4361ee;">Nice try diddy</h1><p style="font-size:1.5rem;">Inspector tools are disabled on this page.</p></div>';
+          }
+        }
+        
+        // Run the detection periodically
+        setInterval(detectDevTools, 1000);
+      })();
+      
+      // Disable browser features that could be used to copy content
+      document.addEventListener('DOMContentLoaded', function() {
+        // Disable save image as...
+        document.addEventListener('contextmenu', function(e) {
+          if (e.target.nodeName === 'IMG') {
+            e.preventDefault();
+            showMessage(e.pageX, e.pageY);
+            return false;
+          }
+        });
+        
+        // Disable print
+        window.addEventListener('beforeprint', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          showMessage();
+          return false;
+        });
+      });
+
+      // Create a custom global error handler to catch inspection attempts
+      window.onerror = function(message, source, lineno, colno, error) {
+        // If error is related to DevTools API access
+        if (message.indexOf('console') !== -1 || message.indexOf('debugger') !== -1) {
+          showMessage();
+          return true; // Prevents the error from being shown in console
+        }
+        return false;
+      };
+
+      // Add this meta tag to attempt to prevent page viewing in other ways
+      const meta = document.createElement('meta');
+      meta.httpEquiv = 'Content-Security-Policy';
+      meta.content = "frame-ancestors 'self'"; // Prevents iframe embedding
+      document.head.appendChild(meta);
+
+      // Additional console tricks
+      (function() {
+        const consoleProtection = function() {
+          // Override console methods
+          const originalConsole = window.console;
+          window.console = {
+            ...originalConsole,
+            log: function() {
+              showMessage();
+              return originalConsole.log.apply(this, ["Nice try diddy"]);
+            },
+            info: function() {
+              showMessage();
+              return originalConsole.info.apply(this, ["Nice try diddy"]);
+            },
+            warn: function() {
+              showMessage();
+              return originalConsole.warn.apply(this, ["Nice try diddy"]);
+            },
+            error: function() {
+              showMessage();
+              return originalConsole.error.apply(this, ["Nice try diddy"]);
+            }
+          };
+        };
+        
+        // Apply console protection
+        consoleProtection();
+      })();
+    </script>
   </body>
-  </html>
+</html>
