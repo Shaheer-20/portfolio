@@ -854,7 +854,7 @@
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   
   <!-- EmailJS -->
-  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script> -->
 </head>
 <body data-theme="dark">
   <!-- Simple Animated Background -->
@@ -1289,12 +1289,8 @@
     </section>
   
     <!-- Footer -->
-    <footer class="footer">
-      <div class="footer-wave" style="position: relative; overflow: hidden; height: 0;">
-        <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-          <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" style="fill: #0d1117"></path>
-        </svg>
-      </div>
+    <footer class="footer" style="position: relative;">
+      <!-- Remove footer-wave div that was causing fluctuation -->
       <div class="container">
         <div class="row">
           <div class="col-md-12 text-center" data-aos="fade-up">
@@ -1330,8 +1326,8 @@
           anchorPlacement: 'top-bottom'
         });
 
-        // Initialize EmailJS
-        emailjs.init("bxUJ4j5QqjF0z3KiM");
+        // Remove EmailJS initialization
+        // emailjs.init("bxUJ4j5QqjF0z3KiM");
       });
       
       // Navbar scroll effect
@@ -1585,43 +1581,23 @@
         });
       });
       
-      // Form submission with EmailJS
+      // Form submission with EmailJS - simplified to just show thank you message
       document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
         const formStatus = document.getElementById('form-status');
         formStatus.style.display = "block";
-        formStatus.textContent = "Sending message...";
-        formStatus.style.color = "var(--primary-color)";
+        formStatus.style.color = "var(--secondary-color)";
         formStatus.style.backgroundColor = "rgba(255,255,255,0.1)";
         formStatus.style.padding = "10px";
         formStatus.style.borderRadius = "5px";
+        formStatus.textContent = "Thank you for contacting me!";
         
-        const templateParams = {
-          from_name: document.getElementById('name').value,
-          reply_to: document.getElementById('email').value,
-          subject: document.getElementById('subject').value,
-          message: document.getElementById('message').value,
-          to_name: "Mahammad Shaheer"
-        };
+        document.getElementById('contactForm').reset();
         
-        emailjs.send('service_v2bkdgo', 'template_n0kcpcd', templateParams)
-          .then(function(response) {
-            console.log('SUCCESS!', response.status, response.text);
-            formStatus.textContent = "Thank you for your message! I will get back to you soon.";
-            formStatus.style.color = "var(--secondary-color)";
-            document.getElementById('contactForm').reset();
-            setTimeout(() => {
-              formStatus.style.display = "none";
-            }, 5000);
-          }, function(error) {
-            console.log('FAILED...', error);
-            formStatus.textContent = "Oops! Something went wrong. Please try again later.";
-            formStatus.style.color = "red";
-            setTimeout(() => {
-              formStatus.style.display = "none";
-            }, 5000);
-          });
+        setTimeout(() => {
+          formStatus.style.display = "none";
+        }, 5000);
       });
 
       // Navbar active link highlight
