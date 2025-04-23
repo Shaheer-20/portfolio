@@ -1334,8 +1334,16 @@
           anchorPlacement: 'top-bottom'
         });
 
-        // Initialize EmailJS
-        emailjs.init("bxUJ4j5QqjF0z3KiM");
+        // Initialize EmailJS with proper public key
+        (function() {
+          emailjs.init({
+            publicKey: "bxUJ4j5QqjF0z3KiM",
+            // Uncomment the next line if you want to disable analytics
+            // limitRate: false
+          });
+        })();
+        
+        console.log("EmailJS initialized");
       });
       
       // Navbar scroll effect
@@ -1601,15 +1609,30 @@
         formStatus.style.padding = "10px";
         formStatus.style.borderRadius = "5px";
         
+        // Log form data for debugging
+        console.log('Form submission:', {
+          from_name: document.getElementById('name').value,
+          reply_to: document.getElementById('email').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value
+        });
+        
         const templateParams = {
           from_name: document.getElementById('name').value,
+          email: document.getElementById('email').value, // Match template parameter
           reply_to: document.getElementById('email').value,
           subject: document.getElementById('subject').value,
           message: document.getElementById('message').value,
           to_name: "Mahammad Shaheer"
         };
         
-        emailjs.send('service_v2bkdgo', 'template_n0kcpcd', templateParams)
+        // Double check service and template IDs
+        const serviceID = 'service_v2bkdgo';
+        const templateID = 'template_n0kcpcd';
+        
+        console.log('Sending with IDs:', serviceID, templateID);
+        
+        emailjs.send(serviceID, templateID, templateParams)
           .then(function(response) {
             console.log('SUCCESS!', response.status, response.text);
             formStatus.textContent = "Thank you for your message! I will get back to you soon.";
@@ -1620,11 +1643,12 @@
             }, 5000);
           }, function(error) {
             console.log('FAILED...', error);
-            formStatus.textContent = "Oops! Something went wrong. Please try again later.";
+            // Show more detailed error message
+            formStatus.textContent = "Error: " + (error.text || "Something went wrong. Please try again later.");
             formStatus.style.color = "red";
             setTimeout(() => {
               formStatus.style.display = "none";
-            }, 5000);
+            }, 8000);
           });
       });
 
