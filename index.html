@@ -915,7 +915,7 @@
       <div class="row align-items-center">
         <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1200">
           <div class="about-image tilt-card">
-            <img src="https://drive.google.com/thumbnail?id=1HJKY3nwDleWlXCTk0lrKydh0fcFWr7nv&sz=w1000" alt="Profile Photo" class="img-fluid rounded">
+            <img src="https://i.imgur.com/0MbSbLZ.jpeg" alt="Profile Photo" class="img-fluid rounded">
           </div>
         </div>
         <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
@@ -1768,11 +1768,11 @@
               this.color = this.lerpColor(this.color, this.targetColor, 0.02); // 2% transition per frame
             }
             
-            // Occasionally change wave parameters for more dynamic animation
-            if (Math.random() < 0.001) {
-              this.amplitude = canvas.height * (0.05 + Math.random() * 0.05);
-              this.frequency = 0.002 + Math.random() * 0.008;
-            }
+            // Remove the random fluctuation for stable animation
+            // if (Math.random() < 0.001) {
+            //   this.amplitude = canvas.height * (0.05 + Math.random() * 0.05);
+            //   this.frequency = 0.002 + Math.random() * 0.008;
+            // }
           }
           
           draw() {
