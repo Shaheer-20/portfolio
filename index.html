@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Mahammad Shaheer - Full Stack Developer, AI/ML Enthusiast & Embedded Systems Engineer. Portfolio showcasing projects in Web Development, Flutter, IoT and more." />
-  <title>Mahammad Shaheer | Portfolio</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mahammad Shaheer's Portfolio - Frontend Developer">
+  <title>Mahammad Shaheer - Portfolio</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  
   <style>
     :root {
       --primary-color: #4361ee;
@@ -528,6 +531,21 @@
       transform: translateY(-3px);
     }
     
+    /* Fix for placeholder text in dark mode */
+    .form-control::placeholder {
+      color: var(--text-color);
+      opacity: 0.7;
+    }
+    
+    [data-theme="dark"] .form-control {
+      background: rgba(30, 30, 44, 0.3);
+      border-color: rgba(255,255,255,0.1);
+    }
+    
+    [data-theme="dark"] .form-control:focus {
+      background: rgba(30, 30, 44, 0.5);
+    }
+    
     .contact-info {
       background: var(--gradient-1);
       color: white;
@@ -832,6 +850,15 @@
       pointer-events: none;
     }
   </style>
+  <!-- Main CSS File -->
+  <link href="style.css" rel="stylesheet" />
+
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body data-theme="dark">
   <!-- Simple Animated Background -->
@@ -1243,24 +1270,21 @@
             <div class="contact-form">
               <form id="contactForm">
                 <div class="row">
-                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
-                    <div class="form-group">
-                      <input type="text" class="form-control" id="name" placeholder="Your Name" required>
-                    </div>
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
                   </div>
-                  <div class="col-md-6" data-aos="fade-up" data-aos-delay="200">
-                    <div class="form-group">
-                      <input type="email" class="form-control" id="email" placeholder="Your Email" required>
-                    </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
                   </div>
                 </div>
-                <div class="form-group" data-aos="fade-up" data-aos-delay="300">
-                  <input type="text" class="form-control" id="subject" placeholder="Subject" required>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
                 </div>
-                <div class="form-group" data-aos="fade-up" data-aos-delay="400">
-                  <textarea class="form-control" id="message" rows="5" placeholder="Your Message" required></textarea>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-custom w-100" data-aos="zoom-in" data-aos-delay="500">Send Message</button>
+                <div class="text-center mt-4"><button type="submit" class="btn btn-custom">Send Message</button></div>
+                <div id="form-status" style="display: none; margin-top: 15px; text-align: center; padding: 10px;"></div>
               </form>
             </div>
           </div>
@@ -1295,6 +1319,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.7.0/vanilla-tilt.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     
     <script>
       // Initialize AOS with enhanced settings
@@ -1308,6 +1333,9 @@
           delay: 100,
           anchorPlacement: 'top-bottom'
         });
+
+        // Initialize EmailJS
+        emailjs.init("bxUJ4j5QqjF0z3KiM");
       });
       
       // Navbar scroll effect
@@ -1561,13 +1589,43 @@
         });
       });
       
-      // Form submission
+      // Form submission with EmailJS
       document.getElementById('contactForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
-        // Form validation and submission logic would go here
-        alert('Thank you for your message! I will get back to you soon.');
-        this.reset();
+        const formStatus = document.getElementById('form-status');
+        formStatus.style.display = "block";
+        formStatus.textContent = "Sending message...";
+        formStatus.style.color = "var(--primary-color)";
+        formStatus.style.backgroundColor = "rgba(255,255,255,0.1)";
+        formStatus.style.padding = "10px";
+        formStatus.style.borderRadius = "5px";
+        
+        const templateParams = {
+          from_name: document.getElementById('name').value,
+          reply_to: document.getElementById('email').value,
+          subject: document.getElementById('subject').value,
+          message: document.getElementById('message').value,
+          to_name: "Mahammad Shaheer"
+        };
+        
+        emailjs.send('service_v2bkdgo', 'template_n0kcpcd', templateParams)
+          .then(function(response) {
+            console.log('SUCCESS!', response.status, response.text);
+            formStatus.textContent = "Thank you for your message! I will get back to you soon.";
+            formStatus.style.color = "var(--secondary-color)";
+            document.getElementById('contactForm').reset();
+            setTimeout(() => {
+              formStatus.style.display = "none";
+            }, 5000);
+          }, function(error) {
+            console.log('FAILED...', error);
+            formStatus.textContent = "Oops! Something went wrong. Please try again later.";
+            formStatus.style.color = "red";
+            setTimeout(() => {
+              formStatus.style.display = "none";
+            }, 5000);
+          });
       });
 
       // Navbar active link highlight
