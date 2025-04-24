@@ -517,43 +517,24 @@
       transform: scale(1.1);
     }
     
-    /* Contact Section */
-    .contact-form {
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-    }
-    
-    .form-control {
-      border-radius: 10px;
-      padding: 12px 20px;
-      border: 1px solid rgba(0,0,0,0.1);
-      background: rgba(255,255,255,0.05);
-      margin-bottom: 20px;
-      color: var(--text-color);
-      transition: all 0.3s ease;
-    }
-    
-    .form-control:focus {
-      box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.25);
-      border-color: var(--primary-color);
-      background: rgba(255,255,255,0.08);
-      transform: translateY(-3px);
-    }
-    
+    /* Contact Section Optimizations */
     .contact-info {
       background: var(--gradient-1);
       color: white;
       padding: 40px;
       border-radius: 20px;
       height: 100%;
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
     }
     
     .contact-item {
       margin-bottom: 30px;
       display: flex;
       align-items: flex-start;
+      transform: translateZ(0);
+      will-change: transform;
     }
     
     .contact-icon {
@@ -566,13 +547,16 @@
       justify-content: center;
       margin-right: 15px;
       font-size: 1.2rem;
+      transform: translateZ(0);
+      will-change: transform;
     }
     
-    /* Social Icons */
     .social-icons {
       display: flex;
       gap: 15px;
       margin-top: 30px;
+      transform: translateZ(0);
+      will-change: transform;
     }
     
     .social-icon {
@@ -585,12 +569,26 @@
       align-items: center;
       justify-content: center;
       transition: transform 0.3s, background 0.3s;
+      transform: translateZ(0);
+      will-change: transform;
     }
     
-    .social-icon:hover {
-      transform: translateY(-5px) scale(1.1);
-      background: white;
-      color: var(--primary-color);
+    .contact-form {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+      transform: translateZ(0);
+      will-change: transform;
+      backface-visibility: hidden;
+    }
+    
+    /* Optimize AOS animations for contact section */
+    [data-aos="fade-right"],
+    [data-aos="fade-left"] {
+      transition-property: transform, opacity;
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform, opacity;
     }
     
     /* Footer */
@@ -1227,10 +1225,10 @@
           <p class="section-subtitle">Let's discuss your project or just say hello</p>
         </div>
         <div class="row">
-          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1200">
+          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="800">
             <div class="contact-info">
               <h3 class="mb-4">Get In Touch</h3>
-              <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
+              <div class="contact-item">
                 <div class="contact-icon">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
@@ -1239,7 +1237,7 @@
                   <p>Mangalore, Karnataka, India</p>
                 </div>
               </div>
-              <div class="contact-item" data-aos="fade-up" data-aos-delay="300">
+              <div class="contact-item">
                 <div class="contact-icon">
                   <i class="fas fa-envelope"></i>
                 </div>
@@ -1248,7 +1246,7 @@
                   <p>shaheervitla@gmail.com</p>
                 </div>
               </div>
-              <div class="contact-item" data-aos="fade-up" data-aos-delay="500">
+              <div class="contact-item">
                 <div class="contact-icon">
                   <i class="fas fa-phone-alt"></i>
                 </div>
@@ -1257,28 +1255,28 @@
                   <p>+91 9731318691</p>
                 </div>
               </div>
-              <div class="social-icons" data-aos="zoom-in" data-aos-delay="700">
-                <a href="https://www.linkedin.com/in/mahammad-shaheer-174533253/" class="social-icon" data-aos="zoom-in" data-aos-delay="750"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/Shaheer-20" class="social-icon" data-aos="zoom-in" data-aos-delay="800"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon" data-aos="zoom-in" data-aos-delay="850"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/m_shaheer__/" class="social-icon" data-aos="zoom-in" data-aos-delay="900"><i class="fab fa-instagram"></i></a>
+              <div class="social-icons">
+                <a href="https://www.linkedin.com/in/mahammad-shaheer-174533253/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Shaheer-20" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/m_shaheer__/" class="social-icon"><i class="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
+          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="800">
             <div class="contact-form">
               <form id="contactForm">
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
-                    </div>
+                  </div>
                   <div class="col-md-6 form-group mt-3 mt-md-0">
                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
                   </div>
-                    </div>
+                </div>
                 <div class="form-group mt-3">
                   <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
-                  </div>
+                </div>
                 <div class="form-group mt-3">
                   <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
                 </div>
