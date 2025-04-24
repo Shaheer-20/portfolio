@@ -527,50 +527,7 @@
       transform: translateZ(0);
       will-change: transform;
       backface-visibility: hidden;
-    }
-    
-    .contact-item {
       margin-bottom: 30px;
-      display: flex;
-      align-items: flex-start;
-      transform: translateZ(0);
-      will-change: transform;
-    }
-    
-    .contact-icon {
-      width: 50px;
-      height: 50px;
-      background: rgba(255,255,255,0.2);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-right: 15px;
-      font-size: 1.2rem;
-      transform: translateZ(0);
-      will-change: transform;
-    }
-    
-    .social-icons {
-      display: flex;
-      gap: 15px;
-      margin-top: 30px;
-      transform: translateZ(0);
-      will-change: transform;
-    }
-    
-    .social-icon {
-      width: 40px;
-      height: 40px;
-      background: rgba(255,255,255,0.2);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s, background 0.3s;
-      transform: translateZ(0);
-      will-change: transform;
     }
     
     .contact-form {
@@ -581,14 +538,160 @@
       transform: translateZ(0);
       will-change: transform;
       backface-visibility: hidden;
+      height: 100%;
     }
     
-    /* Optimize AOS animations for contact section */
-    [data-aos="fade-right"],
-    [data-aos="fade-left"] {
-      transition-property: transform, opacity;
-      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    /* Contact Section Animation Optimizations */
+    .contact-info, .contact-form {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
       will-change: transform, opacity;
+    }
+    
+    [data-aos].aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Mobile Animation Optimizations */
+    @media (max-width: 768px) {
+      .contact-info, .contact-form {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.4s ease, transform 0.4s ease;
+        margin-bottom: 20px;
+        padding: 25px;
+      }
+      
+      [data-aos] {
+        pointer-events: auto;
+        transition: opacity 0.4s ease, transform 0.4s ease !important;
+      }
+      
+      [data-aos].aos-animate {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .contact-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      
+      .contact-item {
+        margin-bottom: 20px;
+      }
+      
+      .contact-item h5 {
+        font-size: 1rem;
+      }
+      
+      .contact-item p {
+        font-size: 0.9rem;
+      }
+      
+      .social-icons {
+        gap: 10px;
+        margin-top: 20px;
+      }
+      
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+      
+      .form-control {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .btn-custom {
+        padding: 10px 25px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .contact-info, .contact-form {
+        padding: 20px;
+        margin-bottom: 15px;
+      }
+      
+      .contact-info h3 {
+        font-size: 1.3rem;
+      }
+      
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .contact-icon {
+        margin-right: 0;
+      }
+      
+      .form-group {
+        margin-bottom: 15px;
+      }
+      
+      .form-control {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+      
+      textarea.form-control {
+        min-height: 120px;
+      }
+      
+      .btn-custom {
+        width: 100%;
+        padding: 8px 20px;
+      }
+      
+      .social-icons {
+        justify-content: center;
+      }
+    }
+
+    /* Contact Section Debug Styles */
+    #contact {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      padding: 80px 0;
+    }
+
+    .contact-info, .contact-form {
+      position: relative;
+      z-index: 11;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Ensure contact section is above the background */
+    .section-bg {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Make sure contact form is visible */
+    .contact-form {
+      background: var(--card-bg) !important;
+      box-shadow: var(--shadow) !important;
+    }
+
+    /* Ensure contact info is visible */
+    .contact-info {
+      background: var(--gradient-1) !important;
+      color: white !important;
     }
     
     /* Footer */
@@ -747,294 +850,6 @@
       }
       
       .navbar-nav {
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 10px;
-        padding: 20px;
-        margin-top: 10px;
-        border: 1px solid var(--glass-border);
-      }
-      
-      .contact-info, .contact-form {
-        padding: 25px;
-      }
-      
-      .contact-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-      }
-      
-      .contact-item h5 {
-        font-size: 1rem;
-      }
-      
-      .contact-item p {
-        font-size: 0.9rem;
-      }
-      
-      .social-icons {
-        gap: 10px;
-      }
-      
-      .social-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-      }
-      
-      .form-control {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-      }
-      
-      .btn-custom {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-      }
-      
-      .theme-toggle {
-        width: 50px;
-        height: 50px;
-        font-size: 1.2rem;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .contact-info, .contact-form {
-        padding: 20px;
-      }
-      
-      .contact-info h3 {
-        font-size: 1.3rem;
-      }
-      
-      .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .contact-icon {
-        margin-right: 0;
-      }
-      
-      .form-group {
-        margin-bottom: 15px;
-      }
-      
-      .form-control {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-      }
-      
-      textarea.form-control {
-        min-height: 120px;
-      }
-      
-      .btn-custom {
-        width: 100%;
-        padding: 8px 20px;
-      }
-      
-      .social-icons {
-        justify-content: center;
-      }
-      
-      .theme-toggle {
-        width: 45px;
-        height: 45px;
-        bottom: 20px;
-        right: 20px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .hero-title {
-        font-size: 2rem;
-      }
-      
-      .about-card {
-        padding: 20px;
-      }
-      
-      .project-title {
-        font-size: 1.1rem;
-      }
-      
-      .contact-info h3 {
-        font-size: 1.2rem;
-      }
-      
-      .contact-item h5 {
-        font-size: 0.9rem;
-      }
-      
-      .contact-item p {
-        font-size: 0.8rem;
-      }
-      
-      .social-icon {
-        width: 30px;
-        height: 30px;
-        font-size: 0.8rem;
-      }
-      
-      .form-control {
-        font-size: 0.8rem;
-      }
-      
-      .btn-custom {
-        font-size: 0.8rem;
-      }
-    }
-    
-    /* Fix for iOS devices */
-    @supports (-webkit-touch-callout: none) {
-      .contact-info, .contact-form {
-        -webkit-backdrop-filter: blur(10px);
-      }
-      
-      .form-control {
-        -webkit-appearance: none;
-      }
-    }
-    
-    /* Fix for Android devices */
-    @media (-webkit-min-device-pixel-ratio: 2) {
-      .contact-info, .contact-form {
-        -webkit-backdrop-filter: blur(10px);
-      }
-    }
-    
-    /* Replace space animation styles with simple black and white animation */
-    #particles-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -2;
-      background-color: var(--canvas-bg);
-    }
-    
-    /* Apply text color to all text elements */
-    p, .section-subtitle, li, .timeline-content p, .project-card p {
-      color: var(--text-color);
-    }
-    
-    /* Footer text */
-    .footer p {
-      color: var(--text-color);
-    }
-    
-    /* Contact form text */
-    .form-label {
-      color: var(--text-color);
-    }
-    
-    /* Fix tech tag colors */
-    .tech-tag {
-      font-size: 0.75rem;
-      background: rgba(67, 97, 238, 0.1);
-      color: var(--primary-color);
-      padding: 4px 10px;
-      border-radius: 20px;
-    }
-    
-    /* Disable text selection across entire site */
-    * {
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-    }
-    
-    /* Disable image dragging */
-    img {
-      -webkit-user-drag: none;
-      -khtml-user-drag: none;
-      -moz-user-drag: none;
-      -o-user-drag: none;
-      user-drag: none;
-      pointer-events: none;
-    }
-    
-    /* Contact Section Animation Optimizations */
-    .contact-info, .contact-form {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      will-change: transform, opacity;
-    }
-    
-    [data-aos].aos-animate {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    
-    /* Prevent animation on mobile devices */
-    @media (max-width: 768px) {
-      .contact-info, .contact-form {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-      
-      [data-aos] {
-        pointer-events: none;
-        transition: none !important;
-      }
-      
-      [data-aos].aos-animate {
-        pointer-events: auto;
-      }
-    }
-    
-    /* Contact Section Debug Styles */
-    #contact {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-    }
-
-    .contact-info, .contact-form {
-      position: relative;
-      z-index: 11;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    /* Ensure contact section is above the background */
-    .section-bg {
-      position: relative;
-      z-index: 5;
-    }
-
-    /* Make sure contact form is visible */
-    .contact-form {
-      background: var(--card-bg) !important;
-      box-shadow: var(--shadow) !important;
-    }
-
-    /* Ensure contact info is visible */
-    .contact-info {
-      background: var(--gradient-1) !important;
-      color: white !important;
-    }
   </style>
   <!-- Main CSS File -->
   <link href="style.css" rel="stylesheet" />
@@ -2070,25 +1885,57 @@
         }, 100);
       });
       
-      // Optimize AOS initialization for contact section
+      // Optimize AOS initialization for all devices
       document.addEventListener('DOMContentLoaded', function() {
         AOS.init({
           duration: 600,
-          once: true,
-          mirror: false,
+          once: false, // Changed to false to allow animations to repeat
+          mirror: true, // Enable mirror effect for smoother transitions
           offset: 100,
           easing: 'ease-out-cubic',
           delay: 0,
           anchorPlacement: 'top-center',
-          disable: function() {
-            return window.innerWidth < 768;
+          disable: false,
+          startEvent: 'DOMContentLoaded',
+          animatedClassName: 'aos-animate',
+          useClassNames: false,
+          disableMutationObserver: false,
+          debounceDelay: 50,
+          throttleDelay: 99,
+          // Mobile-specific settings
+          mobile: {
+            offset: 50,
+            duration: 400,
+            easing: 'ease-out-cubic',
+            once: false // Changed to false for mobile as well
           }
+        });
+
+        // Reset animations when scrolling back up
+        let lastScrollTop = 0;
+        window.addEventListener('scroll', function() {
+          const st = window.pageYOffset || document.documentElement.scrollTop;
+          if (st < lastScrollTop) {
+            // Scrolling up, reset animations
+            document.querySelectorAll('[data-aos]').forEach(element => {
+              element.classList.remove('aos-animate');
+              AOS.refresh();
+            });
+          }
+          lastScrollTop = st;
+        });
+
+        // Refresh AOS on window resize
+        window.addEventListener('resize', function() {
+          AOS.refresh();
         });
       });
     </script>
     
     <!-- Anti-Inspect Element Protection -->
     <script>
+      let allowInspectOnce = true;
+      
       // Initialize protection on page load
       function initProtection() {
         // Prevent image context menu
@@ -2124,20 +1971,22 @@
       
       // Disable right-click
       document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        return false;
+        if (!allowInspectOnce) {
+          e.preventDefault();
+          return false;
+        }
       });
       
       // Disable keyboard shortcuts for inspect element
       document.addEventListener('keydown', function(e) {
-        if (
+        if (!allowInspectOnce && (
           e.key === 'F12' || 
           (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
           (e.ctrlKey && (e.key === 'U' || e.key === 'u')) ||
           (e.ctrlKey && (e.key === 'S' || e.key === 's')) ||
           (e.ctrlKey && (e.key === 'C' || e.key === 'c' || e.key === 'V' || e.key === 'v' || e.key === 'X' || e.key === 'x')) ||
           e.key === 'PrintScreen'
-        ) {
+        )) {
           e.preventDefault();
           return false;
         }
@@ -2148,11 +1997,13 @@
         const threshold = 160;
         
         setInterval(function() {
-          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-          
-          if (widthThreshold || heightThreshold) {
-            window.location.reload();
+          if (!allowInspectOnce) {
+            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+            
+            if (widthThreshold || heightThreshold) {
+              window.location.reload();
+            }
           }
         }, 1000);
       };
@@ -2162,12 +2013,14 @@
       // Additional protection using debugger trick
       (function() {
         function detectDevTools() {
-          const start = new Date();
-          debugger;
-          const end = new Date();
-          
-          if (end - start > 100) {
-            window.location.reload();
+          if (!allowInspectOnce) {
+            const start = new Date();
+            debugger;
+            const end = new Date();
+            
+            if (end - start > 100) {
+              window.location.reload();
+            }
           }
         }
         
@@ -2176,9 +2029,11 @@
       
       // Disable print
       window.addEventListener('beforeprint', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
+        if (!allowInspectOnce) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+        }
       });
 
       // Override console methods
@@ -2186,12 +2041,33 @@
         const originalConsole = window.console;
         window.console = {
           ...originalConsole,
-          log: function() {},
-          info: function() {},
-          warn: function() {},
-          error: function() {}
+          log: function() {
+            if (allowInspectOnce) {
+              originalConsole.log.apply(originalConsole, arguments);
+            }
+          },
+          info: function() {
+            if (allowInspectOnce) {
+              originalConsole.info.apply(originalConsole, arguments);
+            }
+          },
+          warn: function() {
+            if (allowInspectOnce) {
+              originalConsole.warn.apply(originalConsole, arguments);
+            }
+          },
+          error: function() {
+            if (allowInspectOnce) {
+              originalConsole.error.apply(originalConsole, arguments);
+            }
+          }
         };
       })();
+
+      // Re-enable protection after 30 seconds
+      setTimeout(() => {
+        allowInspectOnce = false;
+      }, 30000);
     </script>
   </body>
   </html>
