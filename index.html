@@ -517,181 +517,80 @@
       transform: scale(1.1);
     }
     
-    /* Contact Section Optimizations */
+    /* Contact Section */
+    .contact-form {
+      background: var(--card-bg);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: var(--shadow);
+    }
+    
+    .form-control {
+      border-radius: 10px;
+      padding: 12px 20px;
+      border: 1px solid rgba(0,0,0,0.1);
+      background: rgba(255,255,255,0.05);
+      margin-bottom: 20px;
+      color: var(--text-color);
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      box-shadow: 0 0 0 3px rgba(76, 201, 240, 0.25);
+      border-color: var(--primary-color);
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
+    }
+    
     .contact-info {
       background: var(--gradient-1);
       color: white;
       padding: 40px;
       border-radius: 20px;
       height: 100%;
-      transform: translateZ(0);
-      will-change: transform;
-      backface-visibility: hidden;
+    }
+    
+    .contact-item {
       margin-bottom: 30px;
+      display: flex;
+      align-items: flex-start;
     }
     
-    .contact-form {
-      background: var(--card-bg);
-      padding: 40px;
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      transform: translateZ(0);
-      will-change: transform;
-      backface-visibility: hidden;
-      height: 100%;
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 15px;
+      font-size: 1.2rem;
     }
     
-    /* Contact Section Animation Optimizations */
-    .contact-info, .contact-form {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-      will-change: transform, opacity;
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 15px;
+      margin-top: 30px;
     }
     
-    [data-aos].aos-animate {
-      opacity: 1;
-      transform: translateY(0);
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(255,255,255,0.2);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s, background 0.3s;
     }
     
-    /* Mobile Animation Optimizations */
-    @media (max-width: 768px) {
-      .contact-info, .contact-form {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.4s ease, transform 0.4s ease;
-        margin-bottom: 20px;
-        padding: 25px;
-      }
-      
-      [data-aos] {
-        pointer-events: auto;
-        transition: opacity 0.4s ease, transform 0.4s ease !important;
-      }
-      
-      [data-aos].aos-animate {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .contact-info h3 {
-        font-size: 1.5rem;
-        margin-bottom: 20px;
-      }
-      
-      .contact-item {
-        margin-bottom: 20px;
-      }
-      
-      .contact-item h5 {
-        font-size: 1rem;
-      }
-      
-      .contact-item p {
-        font-size: 0.9rem;
-      }
-      
-      .social-icons {
-        gap: 10px;
-        margin-top: 20px;
-      }
-      
-      .social-icon {
-        width: 35px;
-        height: 35px;
-        font-size: 0.9rem;
-      }
-      
-      .form-control {
-        padding: 10px 15px;
-        font-size: 0.9rem;
-      }
-      
-      .btn-custom {
-        padding: 10px 25px;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 576px) {
-      .contact-info, .contact-form {
-        padding: 20px;
-        margin-bottom: 15px;
-      }
-      
-      .contact-info h3 {
-        font-size: 1.3rem;
-      }
-      
-      .contact-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-      
-      .contact-icon {
-        margin-right: 0;
-      }
-      
-      .form-group {
-        margin-bottom: 15px;
-      }
-      
-      .form-control {
-        padding: 8px 12px;
-        font-size: 0.85rem;
-      }
-      
-      textarea.form-control {
-        min-height: 120px;
-      }
-      
-      .btn-custom {
-        width: 100%;
-        padding: 8px 20px;
-      }
-      
-      .social-icons {
-        justify-content: center;
-      }
-    }
-
-    /* Contact Section Debug Styles */
-    #contact {
-      position: relative;
-      z-index: 10;
-      min-height: 100vh;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      padding: 80px 0;
-    }
-
-    .contact-info, .contact-form {
-      position: relative;
-      z-index: 11;
-      display: block !important;
-      visibility: visible !important;
-      opacity: 1 !important;
-      transform: none !important;
-    }
-
-    /* Ensure contact section is above the background */
-    .section-bg {
-      position: relative;
-      z-index: 5;
-    }
-
-    /* Make sure contact form is visible */
-    .contact-form {
-      background: var(--card-bg) !important;
-      box-shadow: var(--shadow) !important;
-    }
-
-    /* Ensure contact info is visible */
-    .contact-info {
-      background: var(--gradient-1) !important;
-      color: white !important;
+    .social-icon:hover {
+      transform: translateY(-5px) scale(1.1);
+      background: white;
+      color: var(--primary-color);
     }
     
     /* Footer */
@@ -786,21 +685,25 @@
     /* Responsive Media Queries */
     @media (max-width: 1200px) {
       .hero-title {
-        font-size: 4.5rem;
+        font-size: 4rem;
       }
       
-      .contact-info, .contact-form {
-        padding: 30px;
+      .section-title {
+        font-size: 2.2rem;
       }
     }
     
     @media (max-width: 992px) {
       .hero-title {
-        font-size: 3.5rem;
+        font-size: 3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
       }
       
       section {
-        padding: 70px 0;
+        padding: 60px 0;
       }
       
       .timeline::before {
@@ -817,12 +720,163 @@
         transform: translateX(-50%);
       }
       
-      .contact-info, .contact-form {
+      .project-card {
+        height: 280px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .hero-description {
+        font-size: 1rem;
+        padding: 0 20px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .navbar-nav {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 10px;
+        border: 1px solid var(--glass-border);
+      }
+      
+      .nav-link {
+        padding: 10px 20px;
+        margin: 5px 0;
+      }
+      
+      .contact-info {
         margin-bottom: 30px;
       }
       
-      .contact-item {
+      .theme-toggle {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+        bottom: 20px;
+        right: 20px;
+      }
+      
+      .about-card {
         margin-bottom: 20px;
+      }
+      
+      .project-card {
+        height: 260px;
+        margin-bottom: 20px;
+      }
+      
+      .project-image {
+        height: 55%;
+      }
+      
+      .contact-form, .contact-info {
+        padding: 25px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        padding: 80px 0 60px;
+      }
+      
+      .hero-title {
+        font-size: 2rem;
+        line-height: 1.2;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-description {
+        font-size: 0.95rem;
+        padding: 0 15px;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+      
+      section {
+        padding: 50px 0;
+      }
+      
+      .about-card {
+        padding: 20px;
+      }
+      
+      .about-card h3 {
+        font-size: 1.3rem;
+      }
+      
+      .about-card p {
+        font-size: 0.95rem;
+      }
+      
+      .skill-item {
+        font-size: 0.85rem;
+        padding: 6px 14px;
+        margin-bottom: 8px;
+      }
+      
+      .filter-btn {
+        font-size: 0.85rem;
+        padding: 6px 12px;
+        margin: 3px;
+      }
+      
+      .project-card {
+        height: 240px;
+      }
+      
+      .project-title {
+        font-size: 1.1rem;
+      }
+      
+      .project-content p {
+        font-size: 0.9rem;
+      }
+      
+      .tech-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+      }
+      
+      .contact-form {
+        padding: 20px;
+      }
+      
+      .form-control {
+        padding: 10px 15px;
+        font-size: 0.95rem;
+      }
+      
+      .btn-custom {
+        padding: 10px 25px;
+        font-size: 0.95rem;
+      }
+      
+      .contact-info {
+        padding: 20px;
       }
       
       .contact-icon {
@@ -830,26 +884,178 @@
         height: 40px;
         font-size: 1rem;
       }
+      
+      .social-icons {
+        gap: 10px;
+      }
+      
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
     }
     
-    @media (max-width: 768px) {
+    @media (max-width: 380px) {
       .hero-title {
-        font-size: 3rem;
+        font-size: 1.8rem;
       }
       
       .hero-subtitle {
-        font-size: 1.3rem;
-      }
-      
-      .hero-description {
         font-size: 1rem;
       }
       
-      .section-title {
-        font-size: 2rem;
+      .hero-description {
+        font-size: 0.9rem;
       }
       
-      .navbar-nav {
+      .btn-custom {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 1.4rem;
+      }
+      
+      .project-card {
+        height: 220px;
+      }
+      
+      .project-title {
+        font-size: 1rem;
+      }
+      
+      .project-content p {
+        font-size: 0.85rem;
+      }
+      
+      .tech-tag {
+        font-size: 0.65rem;
+        padding: 2px 6px;
+      }
+    }
+    
+    /* Fix for mobile navigation */
+    .navbar {
+      padding: 15px 0;
+    }
+    
+    .navbar-brand {
+      font-size: 1.5rem;
+    }
+    
+    .navbar-toggler {
+      padding: 4px 8px;
+      border: none;
+    }
+    
+    .navbar-toggler:focus {
+      box-shadow: none;
+      outline: none;
+    }
+    
+    .navbar-toggler-icon {
+      width: 1.2em;
+      height: 1.2em;
+    }
+    
+    /* Improve mobile touch targets */
+    button, 
+    a.btn,
+    .nav-link,
+    .social-icon {
+      touch-action: manipulation;
+    }
+    
+    /* Optimize container padding for mobile */
+    @media (max-width: 576px) {
+      .container {
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      
+      .row {
+        margin-left: -10px;
+        margin-right: -10px;
+      }
+      
+      .col, [class*="col-"] {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    
+    /* Fix mobile form elements */
+    @media (max-width: 576px) {
+      input, 
+      textarea, 
+      select {
+        font-size: 16px !important; /* Prevent iOS zoom on focus */
+      }
+      
+      .form-control {
+        margin-bottom: 15px;
+      }
+    }
+    
+    /* Improve mobile scrolling performance */
+    * {
+      -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Replace space animation styles with simple black and white animation */
+    #particles-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      background-color: var(--canvas-bg);
+    }
+    
+    /* Apply text color to all text elements */
+    p, .section-subtitle, li, .timeline-content p, .project-card p {
+      color: var(--text-color);
+    }
+    
+    /* Footer text */
+    .footer p {
+      color: var(--text-color);
+    }
+    
+    /* Contact form text */
+    .form-label {
+      color: var(--text-color);
+    }
+    
+    /* Fix tech tag colors */
+    .tech-tag {
+      font-size: 0.75rem;
+      background: rgba(67, 97, 238, 0.1);
+      color: var(--primary-color);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    
+    /* Disable text selection across entire site */
+    * {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+    }
+    
+    /* Disable image dragging */
+    img {
+      -webkit-user-drag: none;
+      -khtml-user-drag: none;
+      -moz-user-drag: none;
+      -o-user-drag: none;
+      user-drag: none;
+      pointer-events: none;
+    }
   </style>
   <!-- Main CSS File -->
   <link href="style.css" rel="stylesheet" />
@@ -1224,15 +1430,15 @@
     <!-- Contact Section -->
     <section id="contact" class="section-bg">
       <div class="container">
-        <div class="section-header" data-aos="fade-up" data-aos-duration="600">
+        <div class="section-header" data-aos="fade-up">
           <h2 class="section-title">Contact Me</h2>
           <p class="section-subtitle">Let's discuss your project or just say hello</p>
         </div>
         <div class="row">
-          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="600" data-aos-anchor-placement="top-center">
+          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="1200">
             <div class="contact-info">
               <h3 class="mb-4">Get In Touch</h3>
-              <div class="contact-item">
+              <div class="contact-item" data-aos="fade-up" data-aos-delay="100">
                 <div class="contact-icon">
                   <i class="fas fa-map-marker-alt"></i>
                 </div>
@@ -1241,7 +1447,7 @@
                   <p>Mangalore, Karnataka, India</p>
                 </div>
               </div>
-              <div class="contact-item">
+              <div class="contact-item" data-aos="fade-up" data-aos-delay="300">
                 <div class="contact-icon">
                   <i class="fas fa-envelope"></i>
                 </div>
@@ -1250,7 +1456,7 @@
                   <p>shaheervitla@gmail.com</p>
                 </div>
               </div>
-              <div class="contact-item">
+              <div class="contact-item" data-aos="fade-up" data-aos-delay="500">
                 <div class="contact-icon">
                   <i class="fas fa-phone-alt"></i>
                 </div>
@@ -1259,28 +1465,28 @@
                   <p>+91 9731318691</p>
                 </div>
               </div>
-              <div class="social-icons">
-                <a href="https://www.linkedin.com/in/mahammad-shaheer-174533253/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://github.com/Shaheer-20" class="social-icon"><i class="fab fa-github"></i></a>
-                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.instagram.com/m_shaheer__/" class="social-icon"><i class="fab fa-instagram"></i></a>
+              <div class="social-icons" data-aos="zoom-in" data-aos-delay="700">
+                <a href="https://www.linkedin.com/in/mahammad-shaheer-174533253/" class="social-icon" data-aos="zoom-in" data-aos-delay="750"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/Shaheer-20" class="social-icon" data-aos="zoom-in" data-aos-delay="800"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon" data-aos="zoom-in" data-aos-delay="850"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.instagram.com/m_shaheer__/" class="social-icon" data-aos="zoom-in" data-aos-delay="900"><i class="fab fa-instagram"></i></a>
               </div>
             </div>
           </div>
-          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="600" data-aos-anchor-placement="top-center">
+          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200">
             <div class="contact-form">
               <form id="contactForm">
                 <div class="row">
                   <div class="col-md-6 form-group">
                     <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required />
-                  </div>
+                    </div>
                   <div class="col-md-6 form-group mt-3 mt-md-0">
                     <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required />
                   </div>
-                </div>
+                    </div>
                 <div class="form-group mt-3">
                   <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required />
-                </div>
+                  </div>
                 <div class="form-group mt-3">
                   <textarea class="form-control" name="message" id="message" rows="5" placeholder="Message" required></textarea>
                 </div>
@@ -1884,58 +2090,10 @@
           window.dispatchEvent(scrollEvent);
         }, 100);
       });
-      
-      // Optimize AOS initialization for all devices
-      document.addEventListener('DOMContentLoaded', function() {
-        AOS.init({
-          duration: 600,
-          once: false, // Changed to false to allow animations to repeat
-          mirror: true, // Enable mirror effect for smoother transitions
-          offset: 100,
-          easing: 'ease-out-cubic',
-          delay: 0,
-          anchorPlacement: 'top-center',
-          disable: false,
-          startEvent: 'DOMContentLoaded',
-          animatedClassName: 'aos-animate',
-          useClassNames: false,
-          disableMutationObserver: false,
-          debounceDelay: 50,
-          throttleDelay: 99,
-          // Mobile-specific settings
-          mobile: {
-            offset: 50,
-            duration: 400,
-            easing: 'ease-out-cubic',
-            once: false // Changed to false for mobile as well
-          }
-        });
-
-        // Reset animations when scrolling back up
-        let lastScrollTop = 0;
-        window.addEventListener('scroll', function() {
-          const st = window.pageYOffset || document.documentElement.scrollTop;
-          if (st < lastScrollTop) {
-            // Scrolling up, reset animations
-            document.querySelectorAll('[data-aos]').forEach(element => {
-              element.classList.remove('aos-animate');
-              AOS.refresh();
-            });
-          }
-          lastScrollTop = st;
-        });
-
-        // Refresh AOS on window resize
-        window.addEventListener('resize', function() {
-          AOS.refresh();
-        });
-      });
     </script>
     
     <!-- Anti-Inspect Element Protection -->
     <script>
-      let allowInspectOnce = true;
-      
       // Initialize protection on page load
       function initProtection() {
         // Prevent image context menu
@@ -1971,22 +2129,20 @@
       
       // Disable right-click
       document.addEventListener('contextmenu', function(e) {
-        if (!allowInspectOnce) {
-          e.preventDefault();
-          return false;
-        }
+        e.preventDefault();
+        return false;
       });
       
       // Disable keyboard shortcuts for inspect element
       document.addEventListener('keydown', function(e) {
-        if (!allowInspectOnce && (
+        if (
           e.key === 'F12' || 
           (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i' || e.key === 'J' || e.key === 'j' || e.key === 'C' || e.key === 'c')) ||
           (e.ctrlKey && (e.key === 'U' || e.key === 'u')) ||
           (e.ctrlKey && (e.key === 'S' || e.key === 's')) ||
           (e.ctrlKey && (e.key === 'C' || e.key === 'c' || e.key === 'V' || e.key === 'v' || e.key === 'X' || e.key === 'x')) ||
           e.key === 'PrintScreen'
-        )) {
+        ) {
           e.preventDefault();
           return false;
         }
@@ -1997,13 +2153,11 @@
         const threshold = 160;
         
         setInterval(function() {
-          if (!allowInspectOnce) {
-            const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-            const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-            
-            if (widthThreshold || heightThreshold) {
-              window.location.reload();
-            }
+          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+          
+          if (widthThreshold || heightThreshold) {
+            window.location.reload();
           }
         }, 1000);
       };
@@ -2013,14 +2167,12 @@
       // Additional protection using debugger trick
       (function() {
         function detectDevTools() {
-          if (!allowInspectOnce) {
-            const start = new Date();
-            debugger;
-            const end = new Date();
-            
-            if (end - start > 100) {
-              window.location.reload();
-            }
+          const start = new Date();
+          debugger;
+          const end = new Date();
+          
+          if (end - start > 100) {
+            window.location.reload();
           }
         }
         
@@ -2029,11 +2181,9 @@
       
       // Disable print
       window.addEventListener('beforeprint', function(e) {
-        if (!allowInspectOnce) {
-          e.preventDefault();
-          e.stopPropagation();
-          return false;
-        }
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
       });
 
       // Override console methods
@@ -2041,33 +2191,12 @@
         const originalConsole = window.console;
         window.console = {
           ...originalConsole,
-          log: function() {
-            if (allowInspectOnce) {
-              originalConsole.log.apply(originalConsole, arguments);
-            }
-          },
-          info: function() {
-            if (allowInspectOnce) {
-              originalConsole.info.apply(originalConsole, arguments);
-            }
-          },
-          warn: function() {
-            if (allowInspectOnce) {
-              originalConsole.warn.apply(originalConsole, arguments);
-            }
-          },
-          error: function() {
-            if (allowInspectOnce) {
-              originalConsole.error.apply(originalConsole, arguments);
-            }
-          }
+          log: function() {},
+          info: function() {},
+          warn: function() {},
+          error: function() {}
         };
       })();
-
-      // Re-enable protection after 30 seconds
-      setTimeout(() => {
-        allowInspectOnce = false;
-      }, 30000);
     </script>
   </body>
   </html>
