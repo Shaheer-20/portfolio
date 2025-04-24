@@ -1056,6 +1056,374 @@
       user-drag: none;
       pointer-events: none;
     }
+    
+    /* Base styles for extra large devices (large desktops, 1400px and up) */
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1320px;
+      }
+      
+      .hero-title {
+        font-size: 5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.8rem;
+      }
+      
+      .hero-description {
+        font-size: 1.25rem;
+        max-width: 800px;
+      }
+      
+      .section-title {
+        font-size: 3rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .project-card {
+        height: 350px;
+      }
+    }
+    
+    /* Large devices (desktops, 1200px to 1399px) */
+    @media (min-width: 1200px) and (max-width: 1399px) {
+      .container {
+        max-width: 1140px;
+      }
+      
+      .hero-title {
+        font-size: 4.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.6rem;
+      }
+      
+      .hero-description {
+        font-size: 1.2rem;
+        max-width: 750px;
+      }
+      
+      .section-title {
+        font-size: 2.8rem;
+      }
+      
+      .project-card {
+        height: 320px;
+      }
+    }
+    
+    /* Medium devices (tablets, laptops, 992px to 1199px) */
+    @media (min-width: 992px) and (max-width: 1199px) {
+      .container {
+        max-width: 960px;
+      }
+      
+      .hero-title {
+        font-size: 4rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.5rem;
+      }
+      
+      .hero-description {
+        font-size: 1.1rem;
+        max-width: 700px;
+      }
+      
+      .section-title {
+        font-size: 2.5rem;
+      }
+      
+      .project-card {
+        height: 300px;
+      }
+      
+      .about-card {
+        padding: 25px;
+      }
+    }
+    
+    /* Small devices (landscape tablets, 768px to 991px) */
+    @media (min-width: 768px) and (max-width: 991px) {
+      .container {
+        max-width: 720px;
+      }
+      
+      .hero-title {
+        font-size: 3.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.4rem;
+      }
+      
+      .hero-description {
+        font-size: 1.05rem;
+        max-width: 650px;
+      }
+      
+      .section-title {
+        font-size: 2.3rem;
+      }
+      
+      .project-card {
+        height: 280px;
+      }
+      
+      .timeline-content {
+        width: calc(100% - 70px);
+        margin-left: 70px !important;
+      }
+    }
+    
+    /* Extra small devices (portrait tablets and phones, 576px to 767px) */
+    @media (min-width: 576px) and (max-width: 767px) {
+      .container {
+        max-width: 540px;
+      }
+      
+      .hero-title {
+        font-size: 3rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.3rem;
+      }
+      
+      .hero-description {
+        font-size: 1rem;
+        max-width: 600px;
+        padding: 0 20px;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .project-card {
+        height: 260px;
+      }
+    }
+    
+    /* Mobile devices (phones, less than 576px) */
+    @media (max-width: 575px) {
+      .hero-title {
+        font-size: 2.2rem;
+        line-height: 1.2;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .hero-description {
+        font-size: 0.95rem;
+        padding: 0 15px;
+      }
+      
+      .section-title {
+        font-size: 1.8rem;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        padding: 0 15px;
+      }
+      
+      .project-card {
+        height: 240px;
+      }
+      
+      .navbar-nav {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 10px;
+      }
+      
+      .nav-link {
+        padding: 12px 20px;
+        margin: 5px 0;
+      }
+      
+      .about-card {
+        padding: 20px;
+      }
+      
+      .contact-form,
+      .contact-info {
+        padding: 20px;
+      }
+      
+      .social-icons {
+        gap: 12px;
+      }
+    }
+    
+    /* Very small devices (small phones, less than 380px) */
+    @media (max-width: 379px) {
+      .hero-title {
+        font-size: 2rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem;
+      }
+      
+      .hero-description {
+        font-size: 0.9rem;
+      }
+      
+      .section-title {
+        font-size: 1.6rem;
+      }
+      
+      .project-card {
+        height: 220px;
+      }
+      
+      .project-title {
+        font-size: 1rem;
+      }
+      
+      .btn-custom {
+        padding: 8px 20px;
+        font-size: 0.9rem;
+      }
+    }
+    
+    /* Landscape mode fixes */
+    @media (max-height: 600px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding: 100px 0 50px;
+      }
+      
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      
+      .hero-subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .section {
+        padding: 40px 0;
+      }
+      
+      .project-card {
+        height: auto;
+        min-height: 200px;
+      }
+    }
+    
+    /* Touch device optimizations */
+    @media (hover: none) {
+      .btn-custom:hover {
+        transform: none;
+      }
+      
+      .project-card:hover {
+        transform: none;
+      }
+      
+      .social-icon:hover {
+        transform: none;
+      }
+    }
+    
+    /* High-DPI screen optimizations */
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+      .hero-title {
+        text-rendering: optimizeLegibility;
+      }
+      
+      img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+      }
+    }
+    
+    /* Print styles */
+    @media print {
+      .hero {
+        height: auto;
+        min-height: auto;
+      }
+      
+      .navbar,
+      .theme-toggle,
+      .social-icons,
+      .btn-custom {
+        display: none !important;
+      }
+      
+      * {
+        print-color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+      }
+    }
+    
+    /* Ensure proper form element sizing on iOS */
+    @supports (-webkit-touch-callout: none) {
+      input,
+      textarea,
+      select {
+        font-size: 16px !important;
+      }
+    }
+    
+    /* Fix for notched phones */
+    @supports (padding: max(0px)) {
+      .navbar {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+      }
+      
+      .container {
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+      }
+    }
+    
+    /* Grid system refinements */
+    .row {
+      --bs-gutter-x: 1.5rem;
+      --bs-gutter-y: 0;
+    }
+    
+    @media (max-width: 576px) {
+      .row {
+        --bs-gutter-x: 1rem;
+      }
+      
+      .col, [class*="col-"] {
+        padding-left: calc(var(--bs-gutter-x) * 0.5);
+        padding-right: calc(var(--bs-gutter-x) * 0.5);
+      }
+    }
+    
+    /* Performance optimizations */
+    * {
+      -webkit-overflow-scrolling: touch;
+      -webkit-tap-highlight-color: transparent;
+      -webkit-text-size-adjust: 100%;
+    }
+    
+    /* Smooth scrolling for modern browsers */
+    @media (prefers-reduced-motion: no-preference) {
+      html {
+        scroll-behavior: smooth;
+      }
+    }
   </style>
   <!-- Main CSS File -->
   <link href="style.css" rel="stylesheet" />
