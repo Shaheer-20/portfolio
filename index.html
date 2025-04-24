@@ -685,6 +685,10 @@
       .hero-title {
         font-size: 4.5rem;
       }
+      
+      .contact-info, .contact-form {
+        padding: 30px;
+      }
     }
     
     @media (max-width: 992px) {
@@ -708,6 +712,20 @@
       .timeline-year {
         left: 30px;
         transform: translateX(-50%);
+      }
+      
+      .contact-info, .contact-form {
+        margin-bottom: 30px;
+      }
+      
+      .contact-item {
+        margin-bottom: 20px;
+      }
+      
+      .contact-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
       }
     }
     
@@ -738,8 +756,41 @@
         border: 1px solid var(--glass-border);
       }
       
-      .contact-info {
-        margin-bottom: 30px;
+      .contact-info, .contact-form {
+        padding: 25px;
+      }
+      
+      .contact-info h3 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      
+      .contact-item h5 {
+        font-size: 1rem;
+      }
+      
+      .contact-item p {
+        font-size: 0.9rem;
+      }
+      
+      .social-icons {
+        gap: 10px;
+      }
+      
+      .social-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 0.9rem;
+      }
+      
+      .form-control {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
+      
+      .btn-custom {
+        padding: 10px 25px;
+        font-size: 0.9rem;
       }
       
       .theme-toggle {
@@ -758,18 +809,44 @@
         font-size: 1.8rem;
       }
       
-      .contact-form, .contact-info {
-        padding: 25px;
+      .contact-info, .contact-form {
+        padding: 20px;
       }
       
-      .skill-item {
-        font-size: 0.9rem;
-        padding: 8px 16px;
+      .contact-info h3 {
+        font-size: 1.3rem;
       }
       
-      .filter-btn {
-        font-size: 0.9rem;
-        padding: 6px 16px;
+      .contact-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+      
+      .contact-icon {
+        margin-right: 0;
+      }
+      
+      .form-group {
+        margin-bottom: 15px;
+      }
+      
+      .form-control {
+        padding: 8px 12px;
+        font-size: 0.85rem;
+      }
+      
+      textarea.form-control {
+        min-height: 120px;
+      }
+      
+      .btn-custom {
+        width: 100%;
+        padding: 8px 20px;
+      }
+      
+      .social-icons {
+        justify-content: center;
       }
       
       .theme-toggle {
@@ -791,6 +868,50 @@
       
       .project-title {
         font-size: 1.1rem;
+      }
+      
+      .contact-info h3 {
+        font-size: 1.2rem;
+      }
+      
+      .contact-item h5 {
+        font-size: 0.9rem;
+      }
+      
+      .contact-item p {
+        font-size: 0.8rem;
+      }
+      
+      .social-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+      }
+      
+      .form-control {
+        font-size: 0.8rem;
+      }
+      
+      .btn-custom {
+        font-size: 0.8rem;
+      }
+    }
+    
+    /* Fix for iOS devices */
+    @supports (-webkit-touch-callout: none) {
+      .contact-info, .contact-form {
+        -webkit-backdrop-filter: blur(10px);
+      }
+      
+      .form-control {
+        -webkit-appearance: none;
+      }
+    }
+    
+    /* Fix for Android devices */
+    @media (-webkit-min-device-pixel-ratio: 2) {
+      .contact-info, .contact-form {
+        -webkit-backdrop-filter: blur(10px);
       }
     }
     
@@ -845,6 +966,74 @@
       -o-user-drag: none;
       user-drag: none;
       pointer-events: none;
+    }
+    
+    /* Contact Section Animation Optimizations */
+    .contact-info, .contact-form {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+      will-change: transform, opacity;
+    }
+    
+    [data-aos].aos-animate {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Prevent animation on mobile devices */
+    @media (max-width: 768px) {
+      .contact-info, .contact-form {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+      
+      [data-aos] {
+        pointer-events: none;
+        transition: none !important;
+      }
+      
+      [data-aos].aos-animate {
+        pointer-events: auto;
+      }
+    }
+    
+    /* Contact Section Debug Styles */
+    #contact {
+      position: relative;
+      z-index: 10;
+      min-height: 100vh;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+    }
+
+    .contact-info, .contact-form {
+      position: relative;
+      z-index: 11;
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      transform: none !important;
+    }
+
+    /* Ensure contact section is above the background */
+    .section-bg {
+      position: relative;
+      z-index: 5;
+    }
+
+    /* Make sure contact form is visible */
+    .contact-form {
+      background: var(--card-bg) !important;
+      box-shadow: var(--shadow) !important;
+    }
+
+    /* Ensure contact info is visible */
+    .contact-info {
+      background: var(--gradient-1) !important;
+      color: white !important;
     }
   </style>
   <!-- Main CSS File -->
@@ -1220,12 +1409,12 @@
     <!-- Contact Section -->
     <section id="contact" class="section-bg">
       <div class="container">
-        <div class="section-header" data-aos="fade-up">
+        <div class="section-header" data-aos="fade-up" data-aos-duration="600">
           <h2 class="section-title">Contact Me</h2>
           <p class="section-subtitle">Let's discuss your project or just say hello</p>
         </div>
         <div class="row">
-          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="800">
+          <div class="col-lg-5 mb-4 mb-lg-0" data-aos="fade-right" data-aos-duration="600" data-aos-anchor-placement="top-center">
             <div class="contact-info">
               <h3 class="mb-4">Get In Touch</h3>
               <div class="contact-item">
@@ -1263,7 +1452,7 @@
               </div>
             </div>
           </div>
-          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="800">
+          <div class="col-lg-7" data-aos="fade-left" data-aos-duration="600" data-aos-anchor-placement="top-center">
             <div class="contact-form">
               <form id="contactForm">
                 <div class="row">
@@ -1879,6 +2068,22 @@
           const scrollEvent = new Event('scroll');
           window.dispatchEvent(scrollEvent);
         }, 100);
+      });
+      
+      // Optimize AOS initialization for contact section
+      document.addEventListener('DOMContentLoaded', function() {
+        AOS.init({
+          duration: 600,
+          once: true,
+          mirror: false,
+          offset: 100,
+          easing: 'ease-out-cubic',
+          delay: 0,
+          anchorPlacement: 'top-center',
+          disable: function() {
+            return window.innerWidth < 768;
+          }
+        });
       });
     </script>
     
