@@ -727,125 +727,67 @@
     
     @media (max-width: 768px) {
       .hero-title {
-        font-size: 2.5rem;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.2rem;
-      }
-      
-      .hero-description {
-        font-size: 1rem;
-        padding: 0 20px;
-      }
-      
-      .section-title {
-        font-size: 1.8rem;
-      }
-      
-      .navbar-nav {
-        background: var(--glass-bg);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border-radius: 10px;
-        padding: 15px;
-        margin-top: 10px;
-        border: 1px solid var(--glass-border);
-      }
-      
-      .nav-link {
-        padding: 10px 20px;
-        margin: 5px 0;
-      }
-      
-      .contact-info {
-        margin-bottom: 30px;
-      }
-      
-      .theme-toggle {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-        bottom: 20px;
-        right: 20px;
-      }
-      
-      .about-card {
-        margin-bottom: 20px;
-      }
-      
-      .project-card {
-        height: 260px;
-        margin-bottom: 20px;
-      }
-      
-      .project-image {
-        height: 55%;
-      }
-      
-      .contact-form, .contact-info {
-        padding: 25px;
-      }
-    }
-    
-    @media (max-width: 576px) {
-      .hero {
-        padding: 80px 0 60px;
-      }
-      
-      .hero-title {
-        font-size: 2rem;
+        font-size: 2.2rem !important;
         line-height: 1.2;
-      }
-      
-      .hero-subtitle {
-        font-size: 1.1rem;
-      }
-      
-      .hero-description {
-        font-size: 0.95rem;
         padding: 0 15px;
       }
       
+      .hero-subtitle {
+        font-size: 1.1rem !important;
+        padding: 0 15px;
+      }
+      
+      .hero-description {
+        font-size: 0.95rem !important;
+        padding: 0 20px;
+        text-align: center !important;
+      }
+      
       .section-title {
-        font-size: 1.6rem;
+        font-size: 1.8rem !important;
+        padding: 0 15px;
       }
       
       .section-subtitle {
-        font-size: 1rem;
-        padding: 0 15px;
-      }
-      
-      section {
-        padding: 50px 0;
+        font-size: 1rem !important;
+        padding: 0 20px;
       }
       
       .about-card {
-        padding: 20px;
+        margin: 10px;
+        padding: 15px;
       }
       
       .about-card h3 {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
       }
       
       .about-card p {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
+      }
+      
+      .timeline-content {
+        padding: 15px;
+      }
+      
+      .timeline-content h4 {
+        font-size: 1.1rem;
+      }
+      
+      .timeline-content p {
+        font-size: 0.9rem;
       }
       
       .skill-item {
         font-size: 0.85rem;
-        padding: 6px 14px;
-        margin-bottom: 8px;
-      }
-      
-      .filter-btn {
-        font-size: 0.85rem;
-        padding: 6px 12px;
-        margin: 3px;
+        padding: 8px 15px;
+        margin: 5px;
       }
       
       .project-card {
-        height: 240px;
+        height: auto !important;
+        min-height: 280px;
+        margin: 10px;
       }
       
       .project-title {
@@ -856,27 +798,17 @@
         font-size: 0.9rem;
       }
       
-      .tech-tag {
-        font-size: 0.7rem;
-        padding: 3px 8px;
-      }
-      
       .contact-form {
         padding: 20px;
       }
       
-      .form-control {
-        padding: 10px 15px;
-        font-size: 0.95rem;
-      }
-      
-      .btn-custom {
-        padding: 10px 25px;
-        font-size: 0.95rem;
-      }
-      
       .contact-info {
         padding: 20px;
+        margin-bottom: 20px;
+      }
+      
+      .contact-item {
+        margin-bottom: 20px;
       }
       
       .contact-icon {
@@ -894,32 +826,68 @@
         height: 35px;
         font-size: 0.9rem;
       }
+      
+      .btn-custom {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .navbar {
+        padding: 10px 0;
+      }
+      
+      .navbar-brand {
+        font-size: 1.3rem;
+      }
+      
+      .nav-link {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+      }
     }
     
-    @media (max-width: 380px) {
+    @media (max-width: 480px) {
       .hero-title {
-        font-size: 1.8rem;
+        font-size: 1.8rem !important;
       }
       
       .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1rem !important;
       }
       
       .hero-description {
-        font-size: 0.9rem;
-      }
-      
-      .btn-custom {
-        padding: 8px 20px;
-        font-size: 0.9rem;
+        font-size: 0.9rem !important;
       }
       
       .section-title {
-        font-size: 1.4rem;
+        font-size: 1.6rem !important;
+      }
+      
+      .section-subtitle {
+        font-size: 0.9rem !important;
+      }
+      
+      .about-card {
+        margin: 8px;
+        padding: 12px;
+      }
+      
+      .about-card h3 {
+        font-size: 1.1rem;
+      }
+      
+      .about-card p {
+        font-size: 0.85rem;
+      }
+      
+      .skill-item {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        margin: 4px;
       }
       
       .project-card {
-        height: 220px;
+        min-height: 250px;
       }
       
       .project-title {
@@ -931,48 +899,113 @@
       }
       
       .tech-tag {
+        font-size: 0.7rem;
+        padding: 3px 8px;
+      }
+      
+      .contact-form {
+        padding: 15px;
+      }
+      
+      .contact-info {
+        padding: 15px;
+      }
+      
+      .form-control {
+        font-size: 0.9rem;
+        padding: 8px 12px;
+      }
+      
+      .btn-custom {
+        padding: 8px 18px;
+        font-size: 0.85rem;
+      }
+    }
+    
+    /* Fix for very small devices */
+    @media (max-width: 360px) {
+      .hero-title {
+        font-size: 1.6rem !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 0.9rem !important;
+      }
+      
+      .hero-description {
+        font-size: 0.85rem !important;
+      }
+      
+      .section-title {
+        font-size: 1.4rem !important;
+      }
+      
+      .section-subtitle {
+        font-size: 0.85rem !important;
+      }
+      
+      .about-card {
+        margin: 6px;
+        padding: 10px;
+      }
+      
+      .skill-item {
+        font-size: 0.75rem;
+        padding: 5px 10px;
+        margin: 3px;
+      }
+      
+      .project-card {
+        min-height: 220px;
+      }
+      
+      .project-title {
+        font-size: 0.95rem;
+      }
+      
+      .project-content p {
+        font-size: 0.8rem;
+      }
+      
+      .tech-tag {
         font-size: 0.65rem;
         padding: 2px 6px;
       }
     }
     
-    /* Fix for mobile navigation */
-    .navbar {
-      padding: 15px 0;
+    /* Fix for landscape mode */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .hero {
+        min-height: auto;
+        padding: 80px 0 40px;
+      }
+      
+      .hero-title {
+        font-size: 2rem !important;
+      }
+      
+      .hero-subtitle {
+        font-size: 1rem !important;
+      }
+      
+      .hero-description {
+        font-size: 0.9rem !important;
+      }
+      
+      section {
+        padding: 40px 0;
+      }
+      
+      .project-card {
+        min-height: 200px;
+      }
     }
     
-    .navbar-brand {
-      font-size: 1.5rem;
-    }
-    
-    .navbar-toggler {
-      padding: 4px 8px;
-      border: none;
-    }
-    
-    .navbar-toggler:focus {
-      box-shadow: none;
-      outline: none;
-    }
-    
-    .navbar-toggler-icon {
-      width: 1.2em;
-      height: 1.2em;
-    }
-    
-    /* Improve mobile touch targets */
-    button, 
-    a.btn,
-    .nav-link,
-    .social-icon {
-      touch-action: manipulation;
-    }
-    
-    /* Optimize container padding for mobile */
+    /* Fix for container padding on mobile */
     @media (max-width: 576px) {
       .container {
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 15px;
+        padding-right: 15px;
       }
       
       .row {
@@ -986,12 +1019,35 @@
       }
     }
     
-    /* Fix mobile form elements */
+    /* Fix for mobile navigation */
+    @media (max-width: 768px) {
+      .navbar-collapse {
+        background: var(--glass-bg);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 15px;
+        margin-top: 10px;
+        border: 1px solid var(--glass-border);
+      }
+      
+      .navbar-nav {
+        padding: 10px 0;
+      }
+      
+      .nav-link {
+        padding: 12px 20px;
+        margin: 5px 0;
+        text-align: center;
+      }
+    }
+    
+    /* Fix for mobile form elements */
     @media (max-width: 576px) {
       input, 
       textarea, 
       select {
-        font-size: 16px !important; /* Prevent iOS zoom on focus */
+        font-size: 16px !important;
       }
       
       .form-control {
@@ -999,9 +1055,23 @@
       }
     }
     
-    /* Improve mobile scrolling performance */
-    * {
-      -webkit-overflow-scrolling: touch;
+    /* Fix for mobile touch targets */
+    @media (hover: none) {
+      .btn-custom,
+      .nav-link,
+      .social-icon,
+      .project-link {
+        min-height: 44px;
+        min-width: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      
+      .filter-btn {
+        padding: 10px 20px;
+        margin: 5px;
+      }
     }
     
     /* Replace space animation styles with simple black and white animation */
