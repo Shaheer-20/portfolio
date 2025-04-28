@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <meta name="description" content="Mahammad Shaheer's Portfolio - Frontend Developer">
   <title>Mahammad Shaheer - Portfolio</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
@@ -1492,6 +1492,159 @@
     @media (prefers-reduced-motion: no-preference) {
       html {
         scroll-behavior: smooth;
+      }
+    }
+    
+    /* Fix for container width and spacing */
+    .container {
+      width: 100%;
+      max-width: 100%;
+      padding-left: 15px;
+      padding-right: 15px;
+      margin: 0 auto;
+    }
+    
+    @media (min-width: 576px) {
+      .container {
+        max-width: 540px;
+      }
+    }
+    
+    @media (min-width: 768px) {
+      .container {
+        max-width: 720px;
+      }
+    }
+    
+    @media (min-width: 992px) {
+      .container {
+        max-width: 960px;
+      }
+    }
+    
+    @media (min-width: 1200px) {
+      .container {
+        max-width: 1140px;
+      }
+    }
+    
+    @media (min-width: 1400px) {
+      .container {
+        max-width: 1320px;
+      }
+    }
+    
+    /* Fix for mobile spacing */
+    @media (max-width: 576px) {
+      body {
+        overflow-x: hidden;
+        width: 100%;
+        position: relative;
+      }
+      
+      .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      
+      .row {
+        margin-left: -5px;
+        margin-right: -5px;
+      }
+      
+      .col, [class*="col-"] {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      
+      section {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      
+      .hero {
+        padding-left: 0;
+        padding-right: 0;
+      }
+      
+      .about-card,
+      .project-card,
+      .contact-form,
+      .contact-info {
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    
+    /* Fix for very small devices */
+    @media (max-width: 360px) {
+      .container {
+        padding-left: 5px;
+        padding-right: 5px;
+      }
+      
+      .row {
+        margin-left: -2px;
+        margin-right: -2px;
+      }
+      
+      .col, [class*="col-"] {
+        padding-left: 2px;
+        padding-right: 2px;
+      }
+    }
+    
+    /* Fix for landscape mode */
+    @media (max-height: 500px) and (orientation: landscape) {
+      .container {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+    }
+    
+    /* Fix for mobile navigation */
+    @media (max-width: 768px) {
+      .navbar {
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      
+      .navbar-collapse {
+        margin-left: -10px;
+        margin-right: -10px;
+        width: calc(100% + 20px);
+      }
+    }
+    
+    /* Fix for mobile form elements */
+    @media (max-width: 576px) {
+      .form-control {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      
+      .btn-custom {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+    }
+    
+    /* Fix for mobile touch targets */
+    @media (hover: none) {
+      .btn-custom,
+      .nav-link,
+      .social-icon,
+      .project-link {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+      }
+      
+      .filter-btn {
+        width: auto;
+        margin: 5px;
       }
     }
   </style>
